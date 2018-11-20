@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  app:
+    image: zwilson/pymail
+    env_file: .env
+    build: .
+  server:
+    image: schickling/mailcatcher:latest
+    ports:
+      - 1080:1080
+  client:
+    image: ubuntu:latest
+    # environment:
+    #   MAILCATCHER_PORT_1025_TCP_ADDR: 192.168.1.100
