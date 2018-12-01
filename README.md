@@ -35,51 +35,24 @@ Send mail with Python for fun and profit.
 
 ```sh
 $ pymail send \
-  --from "sender@example.com" \
-  --to "recipient@example.com" \
-  --subject "Hello, world!" \
-  -
+  --to_addrs foo@example.com \
+  -h subject="Hello, Foo!" # header \
+  "Hello, world!" # message
 ```
 
 #### From a file
 
 ```sh
 $ pymail send \
-  --from "foo@example.com" \
   --to "bar@example.com" \
   --cc "baz@example.com" \
-  --subject "Hello, world!" \
-  --message "./message.txt"
+  < message.txt
 ```
 
-### Read messages
+### View messages
 
-#### Recent messages
-
-```sh
-$ pymail head  # print the five most recent messages
-$ pymail head -n 10 # print 10
 ```
-
-#### Regex search
-
-```sh
-$ pymail search \
-  --from "foo@example.com" \
-  --to "bar@example.com" \
-  --regex "Hello.*"
-```
-
-### Configuration
-
-#### View
-```sh
-$ pymail config
-```
-
-### Modify
-```sh
-$ pymail config set
+# TODO: view messages
 ```
 
 ## References

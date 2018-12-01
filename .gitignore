@@ -60,3 +60,11 @@ target/
 portainer\.yml
 
 prometheus\.yml
+
+secrets/**
+
+# setuptools_scm
+_version.py
+
+# env files
+.env

@@ -3,13 +3,21 @@ version: "3.7"
 services:
   app:
     image: zwilson/pymail
-    env_file: .env
     build: .
-  server:
-    image: schickling/mailcatcher:latest
+    env_file: secrets/pymail/.env
     ports:
-      - 1080:1080
-  client:
-    image: ubuntu:latest
-    # environment:
-    #   MAILCATCHER_PORT_1025_TCP_ADDR: 192.168.1.100
+      - 8025:8025
+    environment:
+      - MAIL_HOST=smtp.gmail.com
+      - MAIL_PORT=465
+    configs:
+      - source: setup.cfg
+        target: /usr/src
+    volumes:
+      - .:/usr/src
+      - ./config/pymail/pymail.cfg:/usr/src/pymail.cfg
+    command: pipenv run python -m pytest
+
+configs:
+  setup.cfg:
+    file: ./setup.cfg
